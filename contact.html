@@ -1,0 +1,80 @@
+<div id="contact" class="content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-
+                 center">
+                <h1 class="section-
+                    title">Contact Us</h1>
+            </div> <!-- /.col-md-12 -->
+        </div> <!-- /.row -->
+        <div class="row">
+            <div class="col-md-offset-2 col
+                 -md-8 text-center bigger-text">
+                <p>We are here to answer any questions you may have about our Udygdham experiences.
+                    Reach out to us and we'll respond as soon as we can.
+                    Even if there is something you have always wanted to experience 
+                    and willing to work together for Udyogdham, 
+                    let us know and we promise we'll do our best for you.
+                </p>
+                <p>If you would like to contact us or
+                    if you have any questions or comments, please call or email us.
+                    We will get back to you as soon as possible.</p>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div id="googlemap" class="googlemap"></div>
+                <script type="text/javascript">
+                    function enlarge_map(){
+                        var address = "Yashwant Nagar Approach Road, Yashwant Nagar, Talegaon Dabhade, Pune, Maharashtra 410507, India";
+                        window.open('http://maps.google.com.au/maps?q='+escape(address));
+                        return false;
+                    }
+                    var map;
+                    function loadmap() {
+                        var geocoder;
+                        var address = "Yashwant Nagar Approach Road, Yashwant Nagar, Talegaon Dabhade, Pune, Maharashtra 410507,India";
+                        var address_description = "<strong>We are here:</strong><br>Udygdham, <br/>Yashwant Nagar Approach Road, Yashwant Nagar,<br/> Talegaon Dabhade, Pune, Maharashtra 410507,India";
+                        geocoder = new google.maps.Geocoder();
+                        geocoder.geocode( { 'address': address}, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                var myOptions = {
+                                    zoom: 16,
+                                    center: new google.maps.LatLng(18.736492, 73.676451),
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+                                map = new google.maps.Map(document.getElementById("googlemap"), myOptions);
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: new google.maps.LatLng(18.736492, 73.676451)
+                                });
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: address_description
+                                });
+                                infowindow.open(map,marker); // uncomment this to display a popup on the map location.
+
+                            } else {
+                                alert("Geocode was not successful for the following reason: " + status);
+                            }
+                        });
+                    }
+                    window.onload=loadmap();
+                </script>
+                <ul class="map_buttons">
+                    <li  style="margin-right:7px;"><a href="#" onclick="return enlarge_map()">enlarge map</a></li>
+                </ul>
+            </div> <!-- /.col-md-6 -->
+            <div class="col-md-offset-2  bigger-text">
+                <h4> Get in touch with us :</h4>
+                <p><strong>Address:</strong><br />
+                    Yashwant Nagar Approach Road,<br />
+                    Yashwant Nagar, Talegaon Dabhade,<br />
+                    Pune, Maharashtra 410507, India
+                </p>
+                <p> <strong>Phone Number</strong>: + 91 2114 287666<br/>
+                    <strong>Email Address</strong>: <a class="view-detail" href="mailto:udyogdham@gmail.com">
+                        udyogdham@gmail.com</a>
+                </p>
+
+            </div> <!-- /.col-md-6 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /#contact -->
