@@ -1,10 +1,7 @@
 (function (window, $) {
     'use strict';
-
     // Cache document for fast access.
     var document = window.document;
-
-
     function mainSlider() {
         $('.bxslider').bxSlider({
             pagerCustom: '#bx-pager',
@@ -14,37 +11,25 @@
             donateText:''
         });
     }
-
     mainSlider();
-
-
-
     var $links = $(".bx-wrapper .bx-controls-direction a, #bx-pager a");
     $links.click(function(){
         $(".slider-caption").removeClass('animated fadeInLeft');
         $(".slider-caption").addClass('animated fadeInLeft');
     });
-
     $(".bx-controls").addClass('container');
     $(".bx-next").addClass('fa fa-angle-right');
     $(".bx-prev").addClass('fa fa-angle-left');
     $(".bx-donate").addClass('donate');
-
-
-
     $('a.toggle-menu').click(function(){
         $('.responsive .main-menu').toggle();
         return false;
     });
-
     $('.responsive .main-menu a').click(function(){
         $('.responsive .main-menu').hide();
 
     });
-
     $('.main-menu').singlePageNav();
-
-
 })(window, jQuery);
 
 var map = '';
@@ -96,10 +81,56 @@ function clickDonateBind(){
         close:'close',
         closeButton:true
     });
-/*
-   $('html, body').animate({
-        scrollTop: $("#foundation").offset().top
-    }, 2000);
-    $('.donate').colorbox({href:"donate.html", top:800});
-*/
 }
+// gallery menu functions starts here
+function expand($elem){
+    var angle = 0;
+    var t = setInterval(function () {
+        if(angle == 1440){
+            clearInterval(t);
+            return;
+        }
+        angle += 40;
+        $('.link',$elem).stop().animate({
+            rotate: '+=-40deg'
+        }, 0);
+    },10);
+    $elem.stop().animate({
+        width:'268px'
+    }, 1000)
+    .find('.item_content').fadeIn(400,function(){
+        $(this).find('p').stop(true,true).fadeIn(600);
+    });
+}
+function collapse($elem){
+    var angle = 1440;
+    var t = setInterval(function () {
+        if(angle == 0){
+            clearInterval(t);
+            return;
+        }
+        angle -= 40;
+        $('.link',$elem).stop().animate({
+            rotate: '+=40deg'
+        }, 0);
+    },10);
+    $elem.stop().animate({
+        width:'52px'
+    }, 1000)
+    .find('.item_content').stop(true,true).fadeOut().find('p').stop(true,true).fadeOut();
+}
+function show_album(ele)
+{
+    var eleId = $('h2', ele).attr('id');
+    $("#gallery").load("gallery/album"+eleId+".html", function(){
+        $("#makeMeScrollable").smoothDivScroll({
+            mousewheelScrolling: "allDirections",
+            manualContinuousScrolling: true
+        });
+        // Init colorbox
+        $("#makeMeScrollable a").colorbox({
+            speed: "500"
+        });
+    });
+}
+//gallery menu functions ends here

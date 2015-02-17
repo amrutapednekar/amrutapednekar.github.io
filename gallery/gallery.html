@@ -1,0 +1,51 @@
+<div class="text-center">
+    <h1 class="section-title" style="padding-bottom: 0px;">Photo Gallery</h1>
+</div>
+
+<div class="menu">
+    <div class="item">
+        <a class="link icon_photos"></a>
+        <div class="item_content">
+            <h2 id="3">Image Gallery 3</h2>
+        </div>
+    </div>
+    <div class="item">
+        <a class="link icon_photos"></a>
+        <div class="item_content">
+            <h2 id="2">Image Gallery 2</h2>
+        </div>
+    </div>
+    <div class="item">
+        <a class="link icon_photos"></a>
+        <div class="item_content">
+            <h2 id="1">IADP Visit- Year 2011</h2>
+        </div>
+    </div>
+</div>
+<div id="gallery"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gallery").load("gallery/album1.html", function(){
+            $("#makeMeScrollable").smoothDivScroll({
+                mousewheelScrolling: "allDirections",
+                manualContinuousScrolling: true
+            });
+            // Init colorbox
+            $("#makeMeScrollable a").colorbox({
+                speed: "500"
+            });
+        });
+    });
+    $('.item').hover(
+    function(){
+        var $this = $(this);
+        expand($this);
+    },
+    function(){
+        var $this = $(this);
+        collapse($this);
+    }
+);
+    $(".item_content").click(
+    function() {show_album(this);});
+</script>
