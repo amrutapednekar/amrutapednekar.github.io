@@ -423,7 +423,7 @@ h6 {
     position: absolute;
     z-index: 988;
     bottom: 140px;
-    background-color: white;
+    background-color: transparent;
     display: inline-block;
     right: 0;
 }
